@@ -11,11 +11,12 @@ export default function CurrentTrack() {
         "https://api.spotify.com/v1/me/player/currently-playing",
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
           },
         }
       );
+      console.log(response.data)
       if (response.data !== "") {
         const currentPlaying = {
           id: response.data.item.id,
@@ -28,7 +29,7 @@ export default function CurrentTrack() {
         dispatch({ type: reducerCases.SET_PLAYING, currentPlaying: null });
       }
     };
-    getCurrentTrack();
+   getCurrentTrack();
   }, [token, dispatch]);
   return (
     <Container>
