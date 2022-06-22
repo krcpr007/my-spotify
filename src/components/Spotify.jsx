@@ -16,10 +16,12 @@ function Spotify() {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
-      });
+      })
+      console.log(data.images[0].url)
       const userInfo = {
         userId : data.id, 
         userName:data.display_name,
+        imgUrl:data.images[0].url, 
       }
       dispatch({type:reducerCases.SET_USER, userInfo})
     };
