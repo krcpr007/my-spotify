@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 export default function Navbar({ navBackground }) {
   const [{ userInfo }] = useStateProvider();
-  console.warn(userInfo)
+  // console.warn(userInfo)
   return (
     <Container navBackground={navBackground}>
       <div className="search__bar">
@@ -14,8 +14,10 @@ export default function Navbar({ navBackground }) {
       </div>
       <div className="avatar">
         <a href={userInfo?.userUrl}>
-         {userInfo.imgUrl? <img src={userInfo.imgUrl} width="40px" alt="avatar" />:<CgProfile /> }
-          <span>{userInfo?.name}</span>
+        <CgProfile />
+         {/* {userInfo.imgUrl? <img src={userInfo.imgUrl} width="40px" alt="avatar" />:<CgProfile /> } */}
+          {/* <span>{userInfo?.name}</span> */}
+          <span>Rajan Kumar</span>
         </a>
       </div>
     </Container>
@@ -53,10 +55,13 @@ const Container = styled.div`
   img{
     border-radius:25px;
   }
+  span{
+    color:white; 
+  }
   .avatar {
     background-color: black;
     padding: 0.3rem 0.4rem;
-    padding-right: 0rem;
+    padding-right: 1rem;
     border-radius: 2rem;
     display: flex;
     justify-content: center;

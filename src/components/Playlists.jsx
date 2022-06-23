@@ -28,7 +28,7 @@ export default function Playlists() {
   const changeCurrentPlaylist = (selectedPlaylistId) => {
     dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
   };
-  console.log("ply",playlists)
+  // console.log("ply",playlists)
   return (
     <Container>
       <ul>

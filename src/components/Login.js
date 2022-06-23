@@ -20,6 +20,7 @@ function Login() {
         <Container>
             <img src="/Spotify_Logo_RGB_Green.png" alt="spotify-logo" />
             <button onClick={handleClick}>Connect Spotify</button>
+            <span>Made by Rajan kumar</span>
         </Container>
     )
 }
@@ -46,6 +47,10 @@ const Container = styled.div`
     border: none;
     font-size: 1.4rem;
     cursor: pointer;
+    }
+    span{
+        color:white;
+        font:bold;
     }
 `;
 
