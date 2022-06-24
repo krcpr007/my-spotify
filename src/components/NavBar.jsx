@@ -1,24 +1,34 @@
-import React from "react";
+import React ,{useState} from "react";
 import styled from "styled-components";
 import { useStateProvider } from "../utils/StateProvider";
 import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import axios from "axios";
 export default function Navbar({ navBackground }) {
-  const [{ userInfo }] = useStateProvider();
-  // console.warn(userInfo)
+  const [{ userInfo , token}] = useStateProvider();
+    const [query , setQuery] = useState('');
+    //searching songs or albums or etc
+    const onSearch = async()=>{
+        let response = await axios.get(`https://api.spotify.com/v1/search?type=album&include_external=audio&q=${query}`,{
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+            },
+        })
+        console.log(response);
+    }
   return (
     <Container navBackground={navBackground}>
       <div className="search__bar">
         <FaSearch />
-        <input type="text" placeholder="Artists, songs, or podcasts" />
+        <input type="text" onChange={e=>setQuery(e.target.value)} placeholder="Artists, songs, or podcasts" />
+          <button onClick={onSearch}>Search</button>
       </div>
       <div className="avatar">
-        <a href={userInfo?.userUrl}>
-        <CgProfile />
-         {/* {userInfo.imgUrl? <img src={userInfo.imgUrl} width="40px" alt="avatar" />:<CgProfile /> } */}
-          {/* <span>{userInfo?.name}</span> */}
-          <span>Rajan Kumar</span>
-        </a>
+        {/*<CgProfile />*/}
+          {userInfo?.imgUrl? <img src={userInfo.imgUrl} width="25px" alt="avatar" />:<CgProfile /> }
+          <span>{userInfo?.userName}</span>
+          {/* <span>Rajan Kumar</span> */}
       </div>
     </Container>
   );
@@ -29,7 +39,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  height: 15vh;
+  height: 22vh;
   position: sticky;
   top: 0;
   transition: 0.3s ease-in-out;
@@ -66,21 +76,19 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      svg {
-        font-size: 1.3rem;
-        background-color: #282828;
-        padding: 0.2rem;
-        border-radius: 1rem;
-        color: #c7c5c5;
-      }
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    svg {
+      font-size: 1.3rem;
+      background-color: #282828;
+      padding: 0.2rem;
+      border-radius: 1rem;
+      color: #c7c5c5;
     }
   }
 `;
