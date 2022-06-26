@@ -32,13 +32,15 @@ function PlayBack() {
     magnifySliderOnHover
     showSaveIcon
     styles={{
-        activeColor: '#fff',
+
         bgColor: '#181818',
-        color: '#fff',
-        loaderColor: '#fff',
+        color: '#1db954',
+        activeColor: '#1db954',
         sliderColor: '#1cb954',
         trackArtistColor: '#ccc',
         trackNameColor: '#fff',
+        height:"14vh",
+        loaderColor:"#1db954"
       }}
   />
   )
