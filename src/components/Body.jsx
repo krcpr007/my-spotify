@@ -31,7 +31,7 @@ function Body({ headerBackground }) {
           id: track.id,
           name: track.name,
           artists: track.artists.map((artist) => artist.name),
-          image: track.album.images[2].url,
+          image: track.album.images[2]?.url,
           duration: track.duration_ms,
           album: track.album.name,
           context_uri: track.album.uri,
