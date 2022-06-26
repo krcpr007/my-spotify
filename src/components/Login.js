@@ -25,6 +25,7 @@ function Login() {
             <img src="/Spotify_Logo_RGB_Green.png" alt="spotify-logo" />
             <button onClick={handleClick}>Connect Spotify</button>
             <span>Made by <a href="https://github.com/krcpr007" target="_blank" rel="noreferrer" >Rajan kumar</a> </span>
+            <span>You need Spotify Premium to use it!!</span>
         </Container>
     )
 }
@@ -42,7 +43,6 @@ const Container = styled.div`
     img {
     height: 20vh;
     }
-    
     button {
     padding: 1rem 5rem;
     border-radius: 5rem;
