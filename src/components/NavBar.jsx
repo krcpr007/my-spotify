@@ -20,15 +20,17 @@ export default function Navbar({ navBackground }) {
   return (
     <Container navBackground={navBackground}>
       <div className="search__bar">
+        
         <FaSearch />
+        <form onSubmit={e=>e.preventDefault()} >
+
         <input type="text" onChange={e=>setQuery(e.target.value)} placeholder="Artists, songs, or podcasts" />
-          <button onClick={onSearch}>Search</button>
+          <button onClick={onSearch} type="submit" style={{display:"none"}} >Search</button>
+        </form>
       </div>
       <div className="avatar">
-        {/*<CgProfile />*/}
           {userInfo?.imgUrl? <img src={userInfo.imgUrl} width="25px" alt="avatar" />:<CgProfile /> }
           <span>{userInfo?.userName}</span>
-          {/* <span>Rajan Kumar</span> */}
       </div>
     </Container>
   );
