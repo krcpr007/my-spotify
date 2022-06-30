@@ -1,12 +1,11 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useStateProvider } from "../utils/StateProvider";
 import { AiFillClockCircle } from "react-icons/ai";
 import { reducerCases } from "../utils/Constants";
 import axios from "axios";
 function Body({ headerBackground }) {
-  // const [albums , setAlbums] = useState([]); 
-  const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] =
+  const [{ token, selectedPlaylist, selectedPlaylistId  }, dispatch] =
     useStateProvider();
   useEffect(() => {
     const getInitialPlaylist = async () => {
@@ -19,7 +18,6 @@ function Body({ headerBackground }) {
           },
         }
       );
-      // console.log(response);
       const selectedPlaylist = {
         id: response.data.id,
         name: response.data.name,
@@ -85,19 +83,6 @@ function Body({ headerBackground }) {
     var seconds = ((ms % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   };
-  // getting albums  via api playlist 
-  const getAlbum = async ()=>{
-    const response = await axios.get('https://api.spotify.com/v1/browse/new-releases', {
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-    },
-    })
-    // console.log("alubms",response.data.albums.items);
-    // setAlbums(response.data.albums.items);
-  }
-  getAlbum()
-
   return (
     <Container>
       {selectedPlaylist && (

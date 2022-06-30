@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { reducerCases } from "../utils/Constants";
 import { useStateProvider } from "../utils/StateProvider";
 
-export default function Playlists() {
+export default function Playlists({setSearchDetails}) {
   const [{ token, playlists }, dispatch] = useStateProvider();
   useEffect(() => {
     const getPlaylistData = async () => {
@@ -26,6 +26,8 @@ export default function Playlists() {
     getPlaylistData();
   }, [token, dispatch]);
   const changeCurrentPlaylist = (selectedPlaylistId) => {
+    // setSearchDetails to null so that in body will show selected playlist  
+    setSearchDetails(null)
     dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
   };
   // console.log("ply",playlists)

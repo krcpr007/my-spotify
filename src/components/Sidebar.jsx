@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 import Playlists from './Playlists';
-function Sidebar() {
+function Sidebar({setSearchDetails}) {
   return (
     <Container>
       <div className="top__links">
@@ -28,7 +28,7 @@ function Sidebar() {
           </li>
         </ul>
       </div>
-      <Playlists />
+      <Playlists setSearchDetails={setSearchDetails} />
     </Container>
   )
 }

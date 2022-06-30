@@ -1,22 +1,12 @@
-import React ,{useState} from "react";
+import React  from "react";
 import styled from "styled-components";
 import { useStateProvider } from "../utils/StateProvider";
 import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import axios from "axios";
-export default function Navbar({ navBackground }) {
-  const [{ userInfo , token}] = useStateProvider();
-    const [query , setQuery] = useState('');
-    //searching songs or albums or etc
-    const onSearch = async()=>{
-        let response = await axios.get(`https://api.spotify.com/v1/search?type=album&include_external=audio&q=${query}`,{
-            headers: {
-                Authorization: "Bearer " + token,
-                "Content-Type": "application/json",
-            },
-        })
-        console.log(response);
-    }
+export default function Navbar({ navBackground , query , setQuery , onSearch}) {
+  const [{ userInfo}] = useStateProvider();
+    
+   
   return (
     <Container navBackground={navBackground}>
       <div className="search__bar">
