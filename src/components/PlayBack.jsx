@@ -4,9 +4,10 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 import { useStateProvider } from '../utils/StateProvider';
 function PlayBack() {
     const [{ token , selectedUri}] = useStateProvider();
-    // console.log("selectedURI" ,selectedUri)
+
+    // console.log("selectedURI" ,currentPlaying)
     const [uri , setUri] = useState([]);
-     const [play , setPlay] = useState(true); 
+    //  const [play , setPlay] = useState(true); 
     useEffect(()=>{
          const  getLastPlayedTrack = async ()=>{
                    const response = await axios.get('https://api.spotify.com/v1/me/player/recently-played',{
@@ -31,7 +32,7 @@ function PlayBack() {
     uris={selectedUri?[selectedUri]:[uri]}
     magnifySliderOnHover
     showSaveIcon
-    autoPlay={play}
+    autoPlay={true}
     styles={{
 
         bgColor: '#181818',

@@ -4,8 +4,7 @@ import { reducerCases } from '../utils/Constants';
 import { useStateProvider } from '../utils/StateProvider';
 import styled from 'styled-components';
 function SearchResults({searchDetails}) {
-  console.log(searchDetails)
-    const [{}, dispatch] = useStateProvider();
+    const [, dispatch] = useStateProvider();
     const playTrack =( 
       id,
       name,
@@ -131,6 +130,7 @@ const Container = styled.div`
       margin-bottom: 5rem;
       .row {
         padding: 0.5rem 1rem;
+        cursor:pointer;
         display: grid;
         grid-template-columns: 0.3fr 3.1fr 2fr 0.1fr;
         &:hover {

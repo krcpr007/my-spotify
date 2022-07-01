@@ -132,6 +132,7 @@ function Body({ headerBackground }) {
                   return (
                     <div
                       className="row"
+                      title="Tap to play"
                       key={id}
                       onClick={() =>
                         playTrack(
@@ -216,6 +217,7 @@ const Container = styled.div`
       flex-direction: column;
       margin-bottom: 5rem;
       .row {
+        cursor:pointer;
         padding: 0.5rem 1rem;
         display: grid;
         grid-template-columns: 0.3fr 3.1fr 2fr 0.1fr;
@@ -227,7 +229,7 @@ const Container = styled.div`
           align-items: center;
           color: #dddcdc;
           img {
-            // cursor:pointer
+           
             height: 40px;
             width: 40px;
           }
