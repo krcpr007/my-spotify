@@ -17,8 +17,8 @@ function PlayBack() {
                       },
                    })
                  
-                //  i should store type also @important
-                   setUri(response.data.items[0].context.uri);
+                 //  i should store type also @important
+                   setUri(response.data.items[0].track.uri);
                 
            }
     getLastPlayedTrack();
