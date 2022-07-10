@@ -7,6 +7,21 @@ import axios from "axios";
 function Body({ headerBackground }) {
   const [{ token, selectedPlaylist, selectedPlaylistId  }, dispatch] =
     useStateProvider();
+    // useEffect(()=>{
+    //   const getSeveralAlbums =async()=>{
+    //     const response = await axios.get(
+    //       ` https://api.spotify.com/v1/browse/new-releases`,
+    //       {
+    //         headers: {
+    //           Authorization: "Bearer " + token,
+    //           "Content-Type": "application/json",
+    //         },
+    //       }
+    //     );
+    //     console.log(response.data); 
+    //   }
+    //   getSeveralAlbums()
+    // },[token])
   useEffect(() => {
     const getInitialPlaylist = async () => {
       const response = await axios.get(
@@ -184,7 +199,9 @@ const Container = styled.div`
     .image {
       img {
         height: 15rem;
+        width:15rem;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+        border-radius:3px;
       }
     }
     .details {
