@@ -1,50 +1,60 @@
 import axios from 'axios';
-import React , {useEffect, useState} from 'react'; 
+import React, { useEffect, useState } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import { useStateProvider } from '../utils/StateProvider';
 function PlayBack() {
-    const [{ token , selectedUri}] = useStateProvider();
+  const [{ token, selectedUri }] = useStateProvider();
 
-    // console.log("selectedURI" ,currentPlaying)
-    const [uri , setUri] = useState([]);
-    //  const [play , setPlay] = useState(true); 
-    useEffect(()=>{
-         const  getLastPlayedTrack = async ()=>{
-                   const response = await axios.get('https://api.spotify.com/v1/me/player/recently-played',{
-                    headers: {
-                        Authorization: "Bearer " + token,
-                        "Content-Type": "application/json",
-                      },
-                   })
-                 
-                 //  i should store type also @important
-                   setUri(response.data.items[0].track.uri);
-                
-           }
+  const [uri, setUri] = useState([]);
+  const [playerState, setPlayerState] = useState(false);
+
+  // detect keypress
+  useEffect(()=>{
+    document.addEventListener('keydown', detectKeyPress, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+  // function to play or pause music whenever space key pressed
+  const detectKeyPress=(e)=>{
+    if(e.key===" "){
+      setPlayerState(!playerState);
+    }
+  }
+  
+  useEffect(() => {
+    const getLastPlayedTrack = async () => {
+      const response = await axios.get('https://api.spotify.com/v1/me/player/recently-played', {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      })
+      setUri(response.data.items[0].track.uri);
+    }
     getLastPlayedTrack();
-    },[token])
-    //@important i need to write logic to play music automatically 
+  }, [token])
+  //@important i need to write logic to play music automatically when a searched music is clicked to play
 
   return (
     <SpotifyPlayer
-    token={token}
-    // uris={uri.length!==0? [uri]: []}
-    uris={selectedUri?[selectedUri]:[uri]}
-    magnifySliderOnHover
-    showSaveIcon
-    autoPlay={true}
-    styles={{
-
+      token={token}
+      uris={selectedUri ? [selectedUri] : [uri]}
+      magnifySliderOnHover
+      showSaveIcon
+      autoPlay={true}
+      play={playerState}
+      styles={{
+      
         bgColor: '#181818',
         color: '#1db954',
         activeColor: '#1db954',
         sliderColor: '#1cb954',
         trackArtistColor: '#ccc',
         trackNameColor: '#fff',
-        height:"14vh",
-        loaderColor:"#1db954"
+        height: "14vh",
+        loaderColor: "#1db954"
       }}
-  />
+    />
   )
 }
 
