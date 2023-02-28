@@ -1,3 +1,5 @@
+### Visit my portfolio🧑🏻‍🎓👨🏻‍💻 made with NextJS and Tailwind CSS💫✨ <a href="https://https://rajan.live/" target="_blank">https://rajan.live</a>
+
 ![spotify-logo](/public/Spotify_Logo_RGB_Green.png)
 
 # My Spotify (spotify-clone)🎧🎚️
