@@ -1,4 +1,4 @@
-### Visit my portfolio🧑🏻‍🎓👨🏻‍💻 made with NextJS and Tailwind CSS💫✨ <a href="https://https://rajan.live/" target="_blank">https://rajan.live</a>
+### Visit my portfolio🧑🏻‍🎓👨🏻‍💻 made with NextJS and Tailwind CSS💫✨ <a href="https://rajankr.vercel.app/" target="_blank">Link</a>
 
 ![spotify-logo](/public/Spotify_Logo_RGB_Green.png)
 
